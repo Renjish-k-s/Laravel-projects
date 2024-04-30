@@ -16,5 +16,10 @@ Route::get('/','FrontEndController@homePage')->name('home');
 Route::get('new-user','FrontEndController@create')->name('create.user');
 
 Route::post('save-user','FrontEndController@save')->name('save.user');
-Route::post('delete-user','FrontEndController@delete')->name('delete.user');
+// Route::post('delete-user','FrontEndController@delete')->name('delete.user');
+
+Route::get('edit-user/{user_id}','FrontEndController@edit')->name('edit.user');
+Route::post('update-user','FrontEndController@update')->name('update.user');
+
+Route::get('delete_user/{user_id}','FrontEndController@delete')->name('delete.user');
 

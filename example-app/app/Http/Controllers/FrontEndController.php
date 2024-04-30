@@ -56,8 +56,34 @@ class FrontEndController extends Controller
         return '1 row inserted';
     }
 
-    public function delete()
+    public function edit($user_id)
     {
+        //return $user_id;
 
+        $user=User::find(decrypt($user_id));
+       // return $user;
+        return view('users.edit',compact('user'));
+
+    }
+
+    public function update()
+    {
+       $user_id=decrypt(request('user_id'));
+        $user=User::find($user_id);
+            $user->update([
+            'first_name'=> request('name'),
+            'email'=> request('email'),
+            'date_of_birth'=> request('dob'),
+            'status'=> request('status'),
+        ]);
+        return redirect()->route('home')->with('message','user updated sucessfully !!!!');
+
+    }
+
+    public function delete($user_id)
+    {
+        User::find(decrypt($user_id))->delete();
+
+        return redirect()->route('home')->with('message','user deleted sucessfully !!!!!');
     }
 }

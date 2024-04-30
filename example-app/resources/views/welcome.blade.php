@@ -32,8 +32,8 @@
       <td>{{$u->first_name}}</td>
       <td>{{$u->email}}</td>
       <td>
-        <a href="" class="btn btn-warning">Edit</a>
-        <a href="{{ route('delete.user',encrypt($user->user_id)) }}" class="btn btn-danger">Delete</a>
+        <a href="{{ route('edit.user',encrypt($u->user_id))}}" class="btn btn-warning">Edit</a>
+        <a href="{{route('delete.user',encrypt($u->user_id))}}" class="btn btn-danger">Delete</a>
       </td>
     </tr>
     @endforeach
